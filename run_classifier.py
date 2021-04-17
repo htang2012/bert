@@ -683,9 +683,9 @@ def model_fn_builder(bert_config, num_labels, init_checkpoint, learning_rate,
 
       def metric_fn(per_example_loss, label_ids, logits, is_real_example):
         predictions = tf.argmax(logits, axis=-1, output_type=tf.int32)
-        accuracy = tf.metrics.accuracy(
+        accuracy = tf.compat.v1.metrics.accuracy(
             labels=label_ids, predictions=predictions, weights=is_real_example)
-        loss = tf.metrics.mean(values=per_example_loss, weights=is_real_example)
+        loss = tf.compat.v1.metrics.mean(values=per_example_loss, weights=is_real_example)
         return {
             "eval_accuracy": accuracy,
             "eval_loss": loss,
@@ -919,7 +919,7 @@ def main(_):
     result = estimator.evaluate(input_fn=eval_input_fn, steps=eval_steps)
 
     output_eval_file = os.path.join(FLAGS.output_dir, "eval_results.txt")
-    with tf.gfile.GFile(output_eval_file, "w") as writer:
+    with tf.compat.v1.gfile.GFile(output_eval_file, "w") as writer:
       tf.compat.v1.logging.info("***** Eval results *****")
       for key in sorted(result.keys()):
         tf.compat.v1.logging.info("  %s = %s", key, str(result[key]))
