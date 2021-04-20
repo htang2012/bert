@@ -8,22 +8,22 @@
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
+            "program": "run_classifier.py",
             "console": "integratedTerminal",
-            "env": { "BERT_BASE_DIR": "/home/ytang/git/Bert/DD/wwm_uncased_L-24_H-1024_A-16",
-                       "GLUE_DIR": "/home/ytang/git/Bert/DD/glue_data"
+            "env": { "BERT_BASE_DIR": "/home/ytang/git/bert/DD/wwm_uncased_L-24_H-1024_A-16",
+                       "GLUE_DIR": "/home/ytang/git/bert/DD/glue_data"
                  },
             "args":[   "--task_name", "MRPC",
                        "--do_train", "true",
                        "--do_eval", "true",
-                       "--data_dir", "/home/ytang/git/Bert/DD/glue_data/MRPC",
-                       "--vocab_file", "/home/ytang/git/Bert/DD/wwm_uncased_L-24_H-1024_A-16/vocab.txt",
-                       "--bert_config_file" , "/home/ytang/git/Bert/DD/wwm_uncased_L-24_H-1024_A-16/bert_config.json",
-                       "--init_checkpoint", "/home/ytang/git/Bert/DD/wwm_uncased_L-24_H-1024_A-16/bert_model.ckpt",
+                       "--data_dir", "/home/ytang/git/bert/DD/glue_data/MRPC",
+                       "--vocab_file", "/home/ytang/git/bert/DD/wwm_uncased_L-24_H-1024_A-16/vocab.txt",
+                       "--bert_config_file" , "/home/ytang/git/bert/DD/wwm_uncased_L-24_H-1024_A-16/bert_config.json",
+                       "--init_checkpoint", "/home/ytang/git/bert/DD/wwm_uncased_L-24_H-1024_A-16/bert_model.ckpt",
                        "--max_seq_length", "128",
-                       "--train_batch_size", "32",
+                       "--train_batch_size", "8",
                        "--learning_rate", "2e-5",
-                       "--num_train_epochs","3.0",
+                       "--num_train_epochs","2.0",
                        "--output_dir", "/tmp/mrpc_output"
             ]
         }
